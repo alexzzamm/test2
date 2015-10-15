@@ -3,7 +3,7 @@
 
 /**
  * @file
- * Demonstrates use of the Form API. Test text.
+ * Demonstrates use of the Form API.
  *
  * For a full list of elements and attributes, see:
  * http://api.drupal.org/api/drupal/developer--topics--forms_api_reference.html/7
@@ -20,20 +20,14 @@ function input_menu() {
     'page arguments' => array('input_simple_form'),
     'access callback' => TRUE,
   );
-  $items['admin/pos/orders'] = array(
-		'title' => 'Таблица заказов',
-		'description' => 'Orders management page.',
-		'page callback' => 'pos_system_orders',
-		'type' => MENU_CALLBACK,
-		'weight' => -10,
-		//'access callback' => TRUE,
-		'access callback' => 'user_access',
-		'access arguments' => array('create bookable_product content'),
-	);
+  $items['input/examples/simple'] = array(
+    'title' => 'Simple',
+    'description' => 'Simple example using a page callback.',
+    'page callback' => 'input_simple_page',
+    'access callback' => TRUE,
+  );
   return $items;
 }
-
-
 
 
 /**
@@ -42,7 +36,8 @@ function input_menu() {
 function input_simple_form($form, &$form_submit) {
   $form['color'] = array(
     '#title' => t('Favorite color'),
-       '#required' => TRUE,
+    '#type' => 'textfield',
+    '#required' => TRUE,
     '#description' => t('What is your favorite color? Blue? No, wait-'),
   );
   $form['submit'] = array(
@@ -50,4 +45,31 @@ function input_simple_form($form, &$form_submit) {
     '#value' => 'Submit',
   );
   return $form;
+}
+
+
+/**
+ * Page demonstrating embedding a form on a page.
+ */
+function input_simple_page() {
+  $build = array(
+    'header_text' => array(
+      '#type' => 'markup',
+      '#markup' => '<p>' . t('To add additional content to a form page, you can use a page callback and return a render array like this.') . '</p>',
+    ),
+    'example_form' => drupal_get_form('input_simple_form'),
+  );
+  return $build;
+}
+
+
+/**
+ * Validation for input_simple_form().
+ */
+function input_simple_form_validate($form, &$form_state) {
+  
+  // Check for the color 'blue'.
+  if ($form_state['values']['color'] == 'blue') {
+    form_set_error('color', 'Sorry, your favorite color is actually yellow.');
+  }
 }
