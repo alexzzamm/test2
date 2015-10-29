@@ -4,7 +4,10 @@
 /**
  * @file
  * Demonstrates use of the Form API.
- *
+ 
+ * Demonstrates use of the Form API.
+ 
+  *
  * For a full list of elements and attributes, see:
  * http://api.drupal.org/api/drupal/developer--topics--forms_api_reference.html/7
  */
@@ -30,6 +33,13 @@ function input_menu() {
     'title' => 'Simple',
     'description' => 'Simple example using a page callback.',
     'page callback' => 'input_simple_page',
+    'access callback' => TRUE,
+  );
+   $items['input/examples'] = array(
+    'title' => 'Form API examples',
+    'description' => 'Example of using the Form API.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('input_simple_form'),
     'access callback' => TRUE,
   );
   return $items;
