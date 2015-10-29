@@ -45,6 +45,12 @@ function input_menu() {
     'page arguments' => array('input_simple_form'),
     'access callback' => TRUE,
   );
+   $items['input/examples/simple'] = array(
+    'title' => 'Simple',
+    'description' => 'Simple example using a page callback.',
+    'page callback' => 'input_simple_page',
+    'access callback' => TRUE,
+  );
   return $items;
 }
 
