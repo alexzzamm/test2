@@ -4,10 +4,7 @@
 /**
  * @file
  * Demonstrates use of the Form API.
- 
- * Demonstrates use of the Form API.
- 
-  *
+ *
  * For a full list of elements and attributes, see:
  * http://api.drupal.org/api/drupal/developer--topics--forms_api_reference.html/7
  */
@@ -57,6 +54,10 @@ function input_simple_form($form, &$form_submit) {
     '#description' => t('What is your favorite color? Blue? No, wait-'),
   );
   $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => 'Submit',
   );
