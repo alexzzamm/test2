@@ -69,11 +69,7 @@ function input_simple_form($form, &$form_submit) {
     '#type' => 'submit',
     '#value' => 'Submit',
   );
-   $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => 'Submit',
-  );
-   $form['submit'] = array(
+    $form['submit'] = array(
     '#type' => 'submit',
     '#value' => 'Submit',
   );
@@ -91,6 +87,7 @@ function input_simple_form($form, &$form_submit) {
 function input_simple_page() {
   $build = array(
     'header_text' => array(
+      '#type' => 'markup',
       '#type' => 'markup',
       '#markup' => '<p>' . t('To add additional content to a form page, you can use a page callback and return a render array like this.') . '</p>',
     ),
