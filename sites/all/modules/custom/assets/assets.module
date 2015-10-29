@@ -45,6 +45,12 @@ function input_menu() {
     'page arguments' => array('input_simple_form'),
     'access callback' => TRUE,
   );
+   $items['input/examples/simple'] = array(
+    'title' => 'Simple',
+    'description' => 'Simple example using a page callback.',
+    'page callback' => 'input_simple_page',
+    'access callback' => TRUE,
+  );
   return $items;
 }
 
@@ -60,6 +66,14 @@ function input_simple_form($form, &$form_submit) {
     '#description' => t('What is your favorite color? Blue? No, wait-'),
   );
   $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+   $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => 'Submit',
   );
